@@ -13,6 +13,25 @@ incorrect reports and checks, breaking CI and such.
 
 Issue was found using Python 3.6.5 (Anaconda distribution). See requirements.txt and Makefile.
 
+---
+
+How to reproduce the issue: 
+
+```
+# also see other make targets in Makefile
+make the-issue
+```
+
+This runs 2 `pytest` tasks in sequence (with `pytest-cov` enabled), and
+prints out files matching the glob `.coverage*`. The first `pytest` task
+causes per-process `.coverage` files to linger, affecting the report from
+the second `pytest` task.
+
+Example output from my local environment is in `make-the-issue-output.txt`.
+
+
+---
+
 Here's a traceback that illustrates what sklearn / joblib is doing that
 spawns a separate Python process:
 
