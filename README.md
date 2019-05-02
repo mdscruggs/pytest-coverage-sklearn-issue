@@ -29,6 +29,10 @@ the second `pytest` task.
 
 Example output from my local environment is in `make-the-issue-output.txt`.
 
+An equivalent case using `coverage` and `pytest` (but not `pytest-cov`) can
+be executed using `make the-issue-no-pytest-cov`, and shows that the
+per-process coverage data files don't linger.
+
 
 ---
 

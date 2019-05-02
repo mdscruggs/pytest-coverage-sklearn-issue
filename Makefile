@@ -37,3 +37,11 @@ the-issue:
 	@ls -la .coverage*
 	@./venv/bin/pytest --cov=othercode othertest.py
 	@ls -la .coverage*
+
+# TLDR: running coverage without pytest-cov shows the issue doesn't occur
+the-issue-no-pytest-cov:
+	@rm -f .coverage*
+	@./venv/bin/coverage run --source mycode -m pytest test.py && ./venv/bin/coverage report
+	@ls -la .coverage*
+	@./venv/bin/coverage run --source othercode -m pytest othertest.py && ./venv/bin/coverage report
+	@ls -la .coverage*
